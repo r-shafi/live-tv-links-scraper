@@ -24,7 +24,10 @@ app.get('/', async (req, res) => {
       });
     });
 
-    res.json(links);
+    res.json({
+      success: true,
+      links,
+    });
   } catch (error) {
     console.log(error);
   }
