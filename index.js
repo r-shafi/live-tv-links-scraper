@@ -7,6 +7,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.set('view engine', 'pug');
+
 app.get('/', async (req, res) => {
   try {
     const response = await axios.get(URL);
@@ -24,10 +26,7 @@ app.get('/', async (req, res) => {
       });
     });
 
-    res.json({
-      success: true,
-      links,
-    });
+    res.render('index', { title: 'Hey', message: 'Hello there!', links });
   } catch (error) {
     console.log(error);
   }
