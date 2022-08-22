@@ -7,6 +7,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const path = require('path');
+
 app.set('view engine', 'pug');
 
 app.get('/', async (req, res) => {
@@ -26,7 +28,7 @@ app.get('/', async (req, res) => {
       });
     });
 
-    res.render('index', { links });
+    res.render(path.join(__dirname + '/views/index.pug'), { links });
   } catch (error) {
     console.log(error);
   }
