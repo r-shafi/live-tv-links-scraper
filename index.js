@@ -26,7 +26,7 @@ app.get('/', async (req, res) => {
       });
     });
 
-    res.render('index', { title: 'Hey', message: 'Hello there!', links });
+    res.render('index', { links });
   } catch (error) {
     console.log(error);
   }
