@@ -1,0 +1,24 @@
+html
+  head
+    title= 'Arrownet Live TV'
+  body
+    h1= 'Arrownet Live TV Links'
+    p= 'Click Link to Copy to Clipboard'
+    ul
+      each item in links
+        li
+          a(href=item.link) #{item.name} 
+
+  script.
+    const links = document.querySelectorAll('a');
+
+    links.forEach(link => link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      
+      navigator.clipboard.writeText(href).then(function() {
+        alert('Copying to clipboard was successful!');
+      }, function(err) {
+        alert('Async: Could not copy text: ', err);
+      });
+    }));
